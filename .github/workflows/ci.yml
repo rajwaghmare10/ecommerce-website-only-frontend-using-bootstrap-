@@ -1,20 +1,27 @@
-name: E-Commerce CI Pipeline
+name: E-Commerce CI/CD Pipeline
 
 on:
   push:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Show project files
-        run: ls
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./E commerce website
 
-      - name: CI pipeline success
-        run: echo "GitHub Actions CI is working"
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
