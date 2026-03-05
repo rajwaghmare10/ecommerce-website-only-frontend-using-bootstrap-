@@ -1,0 +1,20 @@
+name: E-Commerce CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Show project files
+        run: ls
+
+      - name: CI pipeline success
+        run: echo "GitHub Actions CI is working"
